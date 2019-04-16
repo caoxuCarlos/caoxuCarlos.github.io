@@ -37,6 +37,6 @@ RM是Reputation Maxium的缩写，叫“最大重复数量”。
 所以，在肌肉正在超量恢复的过程中，你要不要训练这个部位啊？当然不要，这个时候再锻炼就相当于“哐哐”扇了自己的身体两个耳光，对它说：谁让你帮我超量恢复的！？
 那超量恢复之后应该做什么啊？当然是**赶快继续锻炼同样的部位**，告诉你的身体：我就是想让你给我多恢复一点，上次你从10斤帮我长到了13斤，我们再来一次同样的过程（13-->10-->16），你帮我把肌肉长到16斤吧！
 
-> [!NOTE]
-> Information the user should notice even if skimminglp a user be more successful
+---
 
+全部内容免费公开于[github](https://github.com/caoxuCarlos/a-fitness-guide-for-college-students)
