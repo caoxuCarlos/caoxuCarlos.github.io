@@ -77,16 +77,16 @@ var defaultTheme = {
     codespan: {
       'font-size': '90%',
       // 'font-family': FONT_FAMILY_MONO,
-      'color': '#ff3502',
+      'color': '#6392BF',
       'background': '#f8f5ec',
       'padding': '3px 5px',
       'border-radius': '2px',
     },
     link: {
-      'color': '#ff3502'
+      'color': '#6392BF'
     },
     strong: {
-      'color': '#ff3502'
+      'color': '#6392BF'
     },
     table: {
       'border-collapse': 'collapse',  
