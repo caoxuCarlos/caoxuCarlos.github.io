@@ -61,3 +61,5 @@ j对了, 健身这件事情, 如果有条件的话, 最好能找个高手好好�
 ---
 
 [^1]: 关于这件事情, 还有这样一个版本......https://www.bodybuilding.com/content/ask-the-super-strong-guy-should-i-bench-press-the-bar-in-a-straight-line.html(如果看不懂就简单按上面说的做吧, 其实我也是按"直上直下"做的.)
+
+[返回目录](https://caoxucarlos.github.io/)

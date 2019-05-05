@@ -31,3 +31,5 @@ RM是 Reputation Maximum 的缩写, 这个概念真的是怎么翻译都不舒�
 ---
 
 [^1]: 其实还有很多 "非常规操作" , 但是入门的时候, 先记住这个就行了.
+
+[返回目录](https://caoxucarlos.github.io/)
