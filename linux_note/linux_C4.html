@@ -1,0 +1,315 @@
+<!doctype html>
+<html style='font-size:16px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>linux_C4</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' />
+<link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root { --control-text-color: #777; }
+h1, .h1, .f1 { font-size: 2rem; line-height: 2.5rem; }
+h2, .h2, .f2 { font-size: 1.5rem; line-height: 2rem; }
+h3, .h3, .f3 { font-size: 1.25rem; line-height: 1.5rem; }
+p, .p, .f4, h4, h5, h6, dl, ol, ul, pre[cid], div[cid], #typora-source { font-size: 1.125rem; line-height: 1.5rem; }
+h4 { font-size: 1.13rem; }
+body { font-family: Merriweather, "PT Serif", Georgia, "Times New Roman", STSong, serif; line-height: 1.5rem; font-weight: 400; }
+#write { max-width: 914px; color: rgb(51, 51, 51); }
+img { width: auto; max-width: 100%; }
+body { font-size: 1.5rem; box-sizing: border-box; }
+.ty-table-edit { background: rgb(237, 237, 237); }
+table { width: 100%; font-size: 1.125rem; }
+table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td, table > tfoot > tr > th, table > tfoot > tr > td { padding: 12px; line-height: 1.2; vertical-align: top; border-top: 1px solid rgb(51, 51, 51); }
+table > thead > tr > th { vertical-align: bottom; border-bottom: 2px solid rgb(51, 51, 51); }
+table > caption + thead > tr:first-child > th, table > caption + thead > tr:first-child > td, table > colgroup + thead > tr:first-child > th, table > colgroup + thead > tr:first-child > td, table > thead:first-child > tr:first-child > th, table > thead:first-child > tr:first-child > td { border-top: 0px; }
+table > tbody + tbody { border-top: 2px solid rgb(51, 51, 51); }
+p { font-weight: 300; line-height: 1.5; }
+abbr { border-bottom: 1px dotted black; cursor: help; }
+pre, code { font-family: Menlo, Monaco, "Courier New", monospace; }
+code, .md-fences { color: rgb(122, 122, 122); }
+.md-fences { padding: 0.5rem 1.125em; margin-bottom: 0.88em; font-size: 1rem; border: 1px solid rgb(122, 122, 122); }
+blockquote { padding: 1.33em; font-style: italic; border-left: 5px solid rgb(122, 122, 122); color: rgb(85, 85, 85); }
+blockquote em { color: rgb(0, 0, 0); }
+blockquote footer { font-size: 0.85rem; font-style: normal; background-color: rgb(255, 255, 255); color: rgb(122, 122, 122); border-color: transparent; }
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; font-weight: bold; line-height: 1.2; margin: 1em 0px 0.5em; }
+@media screen and (min-width: 48em) {
+  .h1, h1 { font-size: 3.25rem; }
+  .h2, h2 { font-size: 2.298rem; }
+  .h3, h3 { font-size: 1.625rem; }
+  .h4, h4 { font-size: 1.3rem; }
+  #write > h4.md-focus::before, #write > h5.md-focus::before, #write > h6.md-focus::before { top: 1px; }
+  .p, p, li { font-size: 1.25rem; line-height: 1.8; }
+  table { font-size: 1.25rem; }
+}
+@media (max-width: 48em) {
+  blockquote { margin-left: 1rem; margin-right: 0px; padding: 0.5em; }
+  .h1, h1 { font-size: 2.827rem; }
+  .h2, h2 { font-size: 1.999rem; }
+  .h3, h3 { font-size: 1.413rem; }
+  .h4, h4 { font-size: 1.3rem; }
+}
+@media screen and (min-width: 64em) {
+  .h1, h1 { font-size: 4.498rem; }
+  .h2, h2 { font-size: 2.29rem; }
+  .h3, h3 { font-size: 1.9rem; }
+  .h4, h4 { font-size: 1.591rem; }
+  #write > h4.md-focus::before { top: 4px; }
+}
+a { color: rgb(70, 63, 92); text-decoration: underline; }
+#write { padding-top: 2rem; }
+#write pre.md-meta-block { min-height: 35px; padding: 2000px 1em 10px 0px; white-space: pre; border-width: 0px 30px; border-top-style: initial; border-bottom-style: initial; border-top-color: initial; border-bottom-color: initial; border-image: initial; border-left-style: solid; border-left-color: rgb(248, 248, 248); border-right-style: solid; border-right-color: rgb(248, 248, 248); width: 100vw; max-width: calc(100% + 60px); margin-left: -30px; margin-bottom: 2em; margin-top: -2010px; line-height: 1.5em; color: rgb(122, 122, 122); background-color: rgb(250, 250, 250); font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; font-weight: 300; clear: both; font-size: 1.125rem; }
+.md-image > .md-meta { color: rgb(70, 63, 92); }
+.footnotes { font-size: 1.1rem; }
+.md-tag { font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; }
+.code-tooltip { background: white; }
+.code-tooltip-content { font-size: 1.1rem; }
+.task-list { padding-left: 0px; }
+.md-task-list-item { padding-left: 34px; }
+.md-task-list-item > input { width: 1.25rem; height: 1.25rem; display: block; -webkit-appearance: initial; top: -0.2rem; margin-left: -1.6em; margin-top: calc(1rem - 7px); border: none; }
+.md-task-list-item > input:focus { outline: none; box-shadow: none; }
+.md-task-list-item > input::before { border: 1px solid rgb(85, 85, 85); border-radius: 1.5rem; width: 1.5rem; height: 1.5rem; background: rgb(255, 255, 255); content: " "; transition: background-color 200ms ease-in-out 0s; display: block; }
+.md-task-list-item > input:checked::before, .md-task-list-item > input[checked]::before { background: rgb(51, 51, 51); border-width: 2px; display: inline-block; transition: background-color 200ms ease-in-out 0s; }
+.md-task-list-item > input:checked::after, .md-task-list-item > input[checked]::after { opacity: 1; }
+.md-task-list-item > input::after { transition: opacity 0.05s ease-in-out 0s; transform: rotate(-45deg); position: absolute; top: 0.4375rem; left: 0.28125rem; width: 0.9375rem; height: 0.5rem; border-width: 0px 0px 3px 3px; border-bottom-style: solid; border-left-style: solid; border-bottom-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); border-image: initial; border-top-style: initial; border-top-color: initial; border-right-style: initial; border-right-color: initial; content: " "; opacity: 0; }
+.md-tag { color: inherit; }
+.md-toc:focus .md-toc-content { margin-top: 19px; }
+#typora-sidebar { font-size: 1rem !important; }
+.html-for-mac #typora-sidebar { background-color: white; }
+.outline-content li, .outline-content ul { font-size: 1rem !important; }
+.outline-title { line-height: inherit; margin-top: 10px; }
+.outline-expander { width: 18px; }
+.outline-expander::before { content: "+"; font-family: inherit; color: rgb(108, 108, 108); font-size: 1.5rem; top: 0.1rem; }
+.outline-expander:hover::before { content: "+"; }
+.outline-item-open > .outline-item > .outline-expander::before { content: "-"; }
+#typora-source { font-family: Courier, monospace; color: rgb(106, 106, 106); }
+.os-windows #typora-source { font-family: inherit; }
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property, .CodeMirror.cm-s-typora-default div.CodeMirror-cursor { color: rgb(66, 139, 202); }
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number { color: rgb(119, 119, 119); }
+.md-diagram-panel { margin-top: 24px; margin-left: -1.2em; }
+.md-mathjax-midline { background: rgb(250, 250, 250); }
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip, .enable-diagrams pre.md-fences[lang="flow"] .code-tooltip, .enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip { bottom: -3.4em; }
+.dropdown-menu .divider { border-color: rgb(229, 229, 229); }
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-node'><h1><a name="process" class="md-header-anchor"></a><span>Process</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#process">Process</a></span><span class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#processes-inside-out">Processes inside out</a></span><span class="md-toc-item md-toc-h3" data-ref="n5"><a class="md-toc-inner" href="#multi-user-and-multi-task">Multi-user and Multi Task</a></span><span class="md-toc-item md-toc-h3" data-ref="n8"><a class="md-toc-inner" href="#process-types">Process Types</a></span><span class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" href="#process-attribute">Process Attribute</a></span><span class="md-toc-item md-toc-h3" data-ref="n46"><a class="md-toc-inner" href="#displaying-process-information">Displaying process information</a></span><span class="md-toc-item md-toc-h3" data-ref="n59"><a class="md-toc-inner" href="#life-and-death-of-a-process">LIfe and Death of a Process</a></span><span class="md-toc-item md-toc-h3" data-ref="n78"><a class="md-toc-inner" href="#suid-snd-sgid">SUID snd SGID</a></span><span class="md-toc-item md-toc-h2" data-ref="n82"><a class="md-toc-inner" href="#boot-process-init-and-shutdown">Boot process, Init and shutdown</a></span><span class="md-toc-item md-toc-h3" data-ref="n83"><a class="md-toc-inner" href="#introduction">Introduction</a></span><span class="md-toc-item md-toc-h3" data-ref="n85"><a class="md-toc-inner" href="#the-boot-process">The boot process</a></span><span class="md-toc-item md-toc-h3" data-ref="n87"><a class="md-toc-inner" href="#the-grub">The GRUB</a></span><span class="md-toc-item md-toc-h3" data-ref="n89"><a class="md-toc-inner" href="#init">Init</a></span><span class="md-toc-item md-toc-h3" data-ref="n102"><a class="md-toc-inner" href="#init-run-level">Init run level</a></span><span class="md-toc-item md-toc-h3" data-ref="n111"><a class="md-toc-inner" href="#tools">Tools</a></span><span class="md-toc-item md-toc-h3" data-ref="n113"><a class="md-toc-inner" href="#shutdown">Shutdown</a></span><span class="md-toc-item md-toc-h2" data-ref="n115"><a class="md-toc-inner" href="#managing-processes">Managing Processes</a></span><span class="md-toc-item md-toc-h3" data-ref="n116"><a class="md-toc-inner" href="#how-long-does-it-take">How long does it take</a></span><span class="md-toc-item md-toc-h3" data-ref="n119"><a class="md-toc-inner" href="#load">load</a></span><span class="md-toc-item md-toc-h3" data-ref="n121"><a class="md-toc-inner" href="#can-i-do-anything-as-a-user">Can I do anything as a user?</a></span><span class="md-toc-item md-toc-h2" data-ref="n184"><a class="md-toc-inner" href="#scheduling-processes">Scheduling processes</a></span><span class="md-toc-item md-toc-h3" data-ref="n185"><a class="md-toc-inner" href="#use-that-idle-time">Use that idle time</a></span><span class="md-toc-item md-toc-h3" data-ref="n187"><a class="md-toc-inner" href="#the-sleep-command">The <code>sleep</code> command</a></span><span class="md-toc-item md-toc-h3" data-ref="n190"><a class="md-toc-inner" href="#the-at-command">The <code>at</code> command</a></span><span class="md-toc-item md-toc-h3" data-ref="n196"><a class="md-toc-inner" href="#cron-and-crontab">Cron and crontab</a></span></p></div><p><span>This is a note for </span><a href='http://www.tldp.org/LDP/intro-linux/html/index.html'><span>Introduction to Linux</span></a><span>.</span></p><h2><a name="processes-inside-out" class="md-header-anchor"></a><span>Processes inside out</span></h2><h3><a name="multi-user-and-multi-task" class="md-header-anchor"></a><span>Multi-user and Multi Task</span></h3><p><span>Not every command starts a single process.  Some commands initiate a series of processes, such as </span><strong><span>mozilla</span></strong><span>; others, like </span><strong><span>ls</span></strong><span>, are executed as a single command.</span></p><p><span>Furthermore, Linux is based on UNIX, where it has  been common policy to have </span><strong><span>multiple users running multiple commands, at  the same time and on the same system.</span></strong><span>  It is obvious that measures have  to be taken to have the CPU manage all these processes, and that  functionality has to be provided so users can switch between processes.  In some cases, processes will have to continue to run even when the  user who started them logs out.  And users need a means to reactivate  interrupted processes. </span></p><h3><a name="process-types" class="md-header-anchor"></a><span>Process Types</span></h3><ul><li><p><span>Interactive processes</span></p><p><span>Interactive processes are initialized and controlled through a terminal  session.  In other words, there has to be someone connected to the  system to start these processes; they are not started automatically as  part of the system functions.  </span></p><p><span>They can run </span><strong><span>both foreground and background</span></strong><span>.</span></p><p><span>The shell offers a feature called </span><strong><span>job control</span></strong><span> which allows easy handling of multiple processes. </span></p><p><span>In order to free the issuing terminal after entering the command, a trailing ampersand(</span><code>&amp;</code><span>) is added. </span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/001.png" referrerpolicy="no-referrer"></p><p><span>The full job control features are explained in detail in the </span><strong><span>bash</span></strong><span> Info pages, so only the frequently used job control applications are listed </span><a href='http://www.tldp.org/LDP/intro-linux/html/sect_04_01.html#AEN4685'><span>here</span></a><span>:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/002.png" referrerpolicy="no-referrer"></p><p><span>And we use </span><code>screen</code><span> to make a long time task run background or on a remote server. Click </span><a href='https://www.youtube.com/watch?v=3txYaF_IVZQ'><span>here</span></a><span> to learn this magic tool.</span></p></li><li><p><span>Automatic processes</span></p><p><span>Automatic or batch processes are not connected to a terminal.   Rather, these are tasks that can </span><strong><span>be queued</span></strong><span> into a spooler area, where  they wait to be executed on a FIFO (</span><strong><span>first-in, first-out</span></strong><span>) basis.  Such  tasks can be executed using one of two criteria:</span></p><ul><li><span>At a certain date and time: done using the </span><strong><span>at</span></strong><span> command, which we will discuss in the second part of this chapter.</span></li><li><span>At times when the total system load is low enough to accept extra jobs: done using the </span><strong><code>batch</code></strong><span> command.  By default, tasks are put in a queue where they wait to be  executed until the system load is lower than 0.8.  In large  environments, the system administrator may prefer batch processing when  large amounts of data have to be processed or when tasks demanding a lot of system resources have to be executed on an already loaded system.   Batch processing is also used for optimizing system performance. </span></li></ul></li><li><p><span>Daemons are server processes that run continuously.  Most of the time,  they are initialized at system startup and then wait in the background  until their service is required.  A typical example is the networking  daemon, </span><em><span>xinetd</span></em><span>, which is started in almost every boot  procedure.  After the system is booted, the network daemon just sits and waits until a client program, such as an FTP client, needs to connect.</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/003.png" referrerpolicy="no-referrer"></p><blockquote><p><u><em><span>This little fairy help you guard your computer background.</span></em></u></p></blockquote></li></ul><h3><a name="process-attribute" class="md-header-anchor"></a><span>Process Attribute</span></h3><p><span>A process has a series of characteristics, which can be viewed with the </span><strong><span>ps</span></strong><span> command:</span></p><ul><li><span>The process ID or PID: a </span><strong><span>unique identification number used to refer to the process</span></strong><span>.</span></li><li><span>The parent process ID or PPID: the number of the </span><strong><span>process (PID) that started this process</span></strong><span>.</span></li><li><span>Nice number: the degree of friendliness of this process toward other  processes (not to be confused with process priority, which is calculated based on this nice number and recent CPU usage of the process).</span></li><li><span>Terminal or TTY: terminal to which the process is connected.</span></li><li><span>User name of the real and effective user (RUID and EUID): the owner of the  process.  The real owner is the user issuing the command, the effective  user is the one determining access to system resources.  RUID and EUID  are usually the same, and the process has the same access rights the  issuing user would have.</span></li></ul><h3><a name="displaying-process-information" class="md-header-anchor"></a><span>Displaying process information</span></h3><p><span>The </span><strong><span>ps</span></strong><span> command is one of the tools for  visualizing processes.  This command has several options which can be  combined to display different process attributes.</span></p><p><span>With no options specified, </span><strong><span>ps</span></strong><span> only gives information about the current shell and eventual processes:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/004.png" referrerpolicy="no-referrer"></p><p><span>Since this does not give enough information - generally, at least a  hundred processes are running on your system - we will usually select  particular processes out of the list of all processes, using the </span><strong><span>grep</span></strong><span> command in a </span><em><span>pipe</span></em><span>(</span><code>|</code><span>)</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.73932px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ps</span> <span class="cm-attribute">-ef</span> | <span class="cm-builtin">grep</span> <span class="cm-builtin">bash</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/005.png" referrerpolicy="no-referrer"></p><p><span>Note that </span><strong><span>ps</span></strong><span> </span><strong><span>only gives a momentary state of the active processes</span></strong><span>, it is a one-time recording.  The </span><strong><span>top</span></strong><span> program displays a more precise view by updating the results given by </span><strong><span>ps</span></strong><span> (with a bunch of options) once every five seconds, generating a new  list of the processes causing the heaviest load periodically, meanwhile  integrating more information about the swap space in use and the state  of the CPU, from the </span><code>proc</code><span> file system.</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/006.png" referrerpolicy="no-referrer" alt="pass 006"></p><p><span>The first line of </span><strong><code>top</code></strong><span> contains the same information displayed by the </span><strong><span>uptime</span></strong><span> command:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/007.png" referrerpolicy="no-referrer"></p><p><span>The relations between processes can be visualized using the </span><strong><span>pstree</span></strong><span> command:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/008.png" referrerpolicy="no-referrer"></p><h3><a name="life-and-death-of-a-process" class="md-header-anchor"></a><span>LIfe and Death of a Process</span></h3><ul><li><p><span>process creation</span></p><p><span>A new process is created because an existing process makes an exact copy of itself.  This child process has the same environment as its parent,  only the process ID number is different.  This procedure is called </span><em><span>forking</span></em><span>.</span></p><p><span>The </span><em><span>fork-and-exec</span></em><span> mechanism thus switches an old command  with a new, while </span><strong><span>the environment in which the new program is executed  remains the same</span></strong><span>. </span></p><p><span>This scheme illustrates the fork-and-exec mechanism.  The process ID changes after the fork procedure:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/009.png" referrerpolicy="no-referrer"></p><p><span>There are a couple of cases in which </span><strong><span>init</span></strong><span> becomes the parent of a process, while the process was not started by </span><strong><span>init</span></strong><span>. </span></p><p><span> Many programs, for instance, </span><strong><span>daemonize</span></strong><span> their child processes, so they can keep on running when the parent stops or is being stopped.</span></p><p><span>In an exceptional case, a process might finish while the parent does  not wait for the completion of this process.  Such an unburied process  is called a </span><em><span>zombie</span></em><span> process.</span></p></li><li><p><span>ending process</span></p><p><span>When a process ends normally (it is not killed or otherwise unexpectedly interrupted), the program returns its </span><em><span>exit status</span></em><span> to the parent.  This exit status is a number returned by the program providing the results of the program&#39;s execution.  </span></p></li><li><p><span>signals</span></p><p><span>Processes end because they receive a signal.  There are multiple signals that you can send to a process.  Use the </span><strong><span>kill</span></strong><span> command to send a signal to a process.  The command </span><strong><code>kill -l</code></strong><span>shows a list of signals.  Most signals are for internal use by the system, or for programmers when they write code.  </span></p><p><span>Common signals():</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/010.png" referrerpolicy="no-referrer"></p></li></ul><h3><a name="suid-snd-sgid" class="md-header-anchor"></a><span>SUID snd SGID</span></h3><p><span> These modes exist to provide normal users the ability to execute tasks  they would normally not be able to do because of the tight file  permission scheme used on UNIX based systems.</span></p><p><span>An interesting example </span><a href='http://www.tldp.org/LDP/intro-linux/html/sect_04_01.html#sect_04_01_06'><span>here</span></a><span>.  </span></p><p><span>In a group, different user have different terminal(s).</span></p><h2><a name="boot-process-init-and-shutdown" class="md-header-anchor"></a><span>Boot process, Init and shutdown</span></h2><h3><a name="introduction" class="md-header-anchor"></a><span>Introduction</span></h3><p><span>One of the most powerful aspects of Linux concerns its open method of  starting and stopping the operating system, where it loads specified  programs using their particular configurations, permits you to change  those configurations to </span><strong><span>control the boot process, and shuts down in a  graceful and organized way</span></strong><span>.</span></p><h3><a name="the-boot-process" class="md-header-anchor"></a><span>The boot process</span></h3><p><span>I can&#39;t skip a single word, so this is the </span><a href='http://www.tldp.org/LDP/intro-linux/html/sect_04_02.html#NAVHEADER'><span>link</span></a><span> ,see 4.2.2.</span></p><h3><a name="the-grub" class="md-header-anchor"></a><span>The GRUB</span></h3><p><span>A boot method without wiping other systems MBR configuration.</span></p><h3><a name="init" class="md-header-anchor"></a><span>Init</span></h3><p><span>The kernel, once it is loaded, finds </span><strong><span>init</span></strong><span> in </span><code>sbin</code><span> and executes it.</span></p><p><span>When </span><strong><span>init</span></strong><span> starts, it becomes </span><strong><span>the parent or  grandparent of all of the processes that start up automatically on your  Linux system</span></strong><span>. </span></p><blockquote><ol start='' ><li><strong><code>init</code><span> </span></strong><span>reads its initialization file, </span><code>/etc/inittab</code></li></ol><p><span>Basically, this step takes care of everything that your system needs to  have done at system initialization: setting the clock, initializing  serial ports and so forth.</span></p><ol start='2' ><li><strong><code>init</code><span> </span></strong><span>continues to read the </span><code>/etc/inittab</code><span> file, which describes how the system should be set up in each run level and sets the default </span><strong><span>run level</span></strong><span>. </span></li><li><strong><code>init</code></strong><span> starts all of the </span><strong><span>background processes necessary for the system</span></strong><span> to run by looking in the appropriate </span><code>rc</code><span> directory for that run level.</span></li></ol></blockquote><h3><a name="init-run-level" class="md-header-anchor"></a><span>Init run level</span></h3><p><span>The idea behind operating different services at different run levels  essentially revolves around the fact that different systems can be used  in different ways. Some services only can be used when the system is in a particular state, or </span><em><span>mode</span></em><span>, such as being ready for more than one user or having networking available.</span></p><p><span>Use </span><code>who -r</code><span> to check what your current level is :</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/011.png" referrerpolicy="no-referrer"></p><p><span>Default run level. The run levels are:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/012.png" referrerpolicy="no-referrer"></p><p><span>Ubuntu 16.04 uses </span><strong><code>systemd</code></strong><span> instead of </span><strong><code>init</code></strong><span> and hence the concept of </span><code>runlevels</code><span> is replaced by the term </span><code>targets</code><span>. So there is indeed a mapping between init-based runlevels and systemd-based targets:</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/013.png" referrerpolicy="no-referrer"></p><p><span>More specific instruction see </span><a href='https://askubuntu.com/a/788465'><span>here</span></a><span>.</span></p><h3><a name="tools" class="md-header-anchor"></a><span>Tools</span></h3><p><span>There are some tool to provide a simple command-line tool for maintaining the </span><code>/etc/init.d</code><span> directory hierarchy. These relieve system administrators from having to directly manipulate the numerous symbolic links in the directories  under </span><code>/etc/rc[x].d</code><span>.</span></p><h3><a name="shutdown" class="md-header-anchor"></a><span>Shutdown</span></h3><p><code>shutdown -h</code><span> </span></p><h2><a name="managing-processes" class="md-header-anchor"></a><span>Managing Processes</span></h2><h3><a name="how-long-does-it-take" class="md-header-anchor"></a><span>How long does it take</span></h3><p><span>Bash offers a built-in </span><strong><span>time</span></strong><span> command that displays how long a command takes to execute.  The timing is highly accurate and can be used on any command. </span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/014.png" referrerpolicy="no-referrer" alt="pass 014"></p><h3><a name="load" class="md-header-anchor"></a><span>load</span></h3><p><span>Run </span><code>w</code><span> or </span><code>top</code><span> to check the load. </span></p><h3><a name="can-i-do-anything-as-a-user" class="md-header-anchor"></a><span>Can I do anything as a user?</span></h3><p><strong><span>A big environment can slow you down.</span></strong></p><ul><li><p><span>Priority</span></p><p><span>The priority or importance of a job is defined by it&#39;s </span><em><span>nice</span></em><span>  number.  A program with a high nice number is friendly to other  programs, other users and the system; it is not an important job.  </span><strong><span>The  lower the nice number, the more important a job is and the more  resources it will take without sharing them.</span></strong></p><p><span>Making a job nicer by increasing its nice number is only useful for  processes that use a lot of CPU time (compilers, math applications and  the like).  </span><strong><span>Processes that always use a lot of I/O time are  automatically rewarded by the system and given a higher priority</span></strong><span> (a  lower nice number), for example keyboard input always gets highest  priority on a system.</span></p><p><span>Defining the priority of a program is done with the </span><strong><span>nice</span></strong><span> command. Change the niceness of a running commond by </span><code>renice [newvalue] [ProcessID]</code><span>.</span></p><blockquote><p><span>It is NOT a good idea to </span><strong><span>nice</span></strong><span> or </span><strong><span>renice</span></strong><span> an interactive program or a job running in the foreground.</span></p></blockquote></li><li><p><span>CPU resources</span></p><p><span>On every Linux system, many programs want to use the CPU(s) at the same  time, even if you are the only user on the system.  Every program needs a certain amount of cycles on the CPU to run.  There may be times when  there are not enough cycles because the CPU is too busy. There are some actions you can undertake if you think your CPU is to blame for the unresponsiveness of your system:</span></p><ul><li><span>Run heavy programs when the load is low.  This may be the  case on your system during the night.  See next section for scheduling.</span></li><li><span>Prevent the system from doing unnecessary work: stop daemons and programs that you don&#39;t use, use </span><strong><span>locate</span></strong><span> instead of a heavy </span><strong><span>find</span></strong><span>, ...</span></li><li><span>Run big jobs with a low </span><strong><span>priority</span></strong></li></ul></li><li><p><span>Memory resources</span></p><p><span>When the currently running processes expect more memory than the system  has physically available, a Linux system will not crash; it will start  paging, or </span><em><span>swapping</span></em><span>, meaning the process uses the memory on  disk or in swap space, moving contents of the physical memory (pieces of running programs or entire programs in the case of swapping) to disk,  thus reclaiming the physical memory to handle more processes.  This  slows the system down enormously since access to disk is much slower  than access to memory.  The </span><strong><span>top</span></strong><span> command can be used to display memory and swap use.</span></p><p><span>If you find that a lot of memory and swap space are being used, you can try:</span></p><ul><li><span>Killing, stopping or renicing those programs that use a big chunk of memory</span></li><li><span>Adding more memory (and in some cases more swap space) to the system.</span></li><li><span>Tuning system performance, which is beyond the scope of this document.  See the reading list in </span><a href='http://www.tldp.org/LDP/intro-linux/html/app1.html'><span>Appendix A</span></a><span> for more.</span></li></ul></li><li><p><span>I/O resources</span></p><p><code>iotop</code></p><p><code>iotop -o</code></p><p><code>iostat</code></p><p><code>vmstat</code><span> : virtual memory statistics</span></p><p><code>netstat</code><span>: print network connections, routing tables, interface statistics, masquerade connections,...</span></p><p><span>Network I/O problems</span></p><p><span>Disk I/O problems.</span></p></li><li><p><span>Users</span></p><p><span>Users can be divided in several classes, depending on their behavior with resource usage:</span></p><ul><li><span>Users who run a (large) number of small jobs: you, the beginning Linux user, for instance.</span></li><li><span>Users who run relatively few but large jobs: users running simulations,  calculations, emulators or other programs that eat a lot of memory, and  usually these users have accompanying large data files.</span></li><li><span>Users who run few jobs but use a lot of CPU time (developers and the like).</span></li></ul><p><span>You can see that system requirements may vary for each class of users, and  that it can be hard to satisfy everyone.  If you are on a multi-user  system, it is useful (and fun) to </span><strong><span>find out habits of other users and the system</span></strong><span>, in order to get the most out of it for your specific purposes.</span></p></li><li><p><span>Graphical tools</span></p><p><code>htop</code></p></li><li><p><span>Interrupting your processes</span></p><p><span>As a non-privileged user, you can only influence your own processes.  We already saw how you can display processes and filter out processes  that belong to a particular user, and what possible restrictions can  occur.  When you see that </span><strong><span>one of your processes is eating too much of  the system&#39;s resources</span></strong><span>, there are two things that you can do:</span></p><ol start='' ><li><p><span>Make the process use less resources without interrupting it;(</span><code>renice</code><span>,</span><code>top</code><span>+</span><code>r</code><span>)</span></p></li><li><p><span>Stop the process altogether.</span><code>kill</code><span>&amp;</span><code>xkill</code></p><p><span>In a graphical environment, the </span><strong><span>xkill</span></strong><span> program is very easy to use.  Just type the name of the command, followed by an </span><strong><span>Enter</span></strong><span> and select the window of the application that you want to stop.  It is  rather dangerous because it sends a SIGKILL by default, so only use it  when an application hangs.</span></p></li></ol></li></ul><h2><a name="scheduling-processes" class="md-header-anchor"></a><span>Scheduling processes</span></h2><h3><a name="use-that-idle-time" class="md-header-anchor"></a><span>Use that idle time</span></h3><p><span>A Linux system can have a lot to suffer from, but it usually suffers  </span><strong><span>only during office hours</span></strong><span>.  Whether in an office environment, a server  room or at home, most Linux systems are just idling away during the  morning, the evening, the nights and weekends.  Using this idle time can be a lot cheaper than buying those machines you&#39;d absolutely need if  you want everything done at the same time.</span></p><h3><a name="the-sleep-command" class="md-header-anchor"></a><span>The </span><code>sleep</code><span> command</span></h3><p><span>The Info page on sleep is probably one of the shortest there is.  All </span><strong><span>sleep</span></strong><span> does is wait.  By default the time to wait is expressed in </span><strong><span>seconds</span></strong><span>.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="bash"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 3.73932px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sleep</span> &lt;number&gt; [unit];&lt;commond&gt;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(sleep <span class="cm-number">1800</span>;echo <span class="cm-string">"lunch"</span>)&amp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(sleep <span class="cm-number">10000</span>; myprogram) &amp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">"a"</span>;sleep <span class="cm-number">5</span>;echo <span class="cm-string">"b"</span>;sleep <span class="cm-number">5</span>;echo <span class="cm-string">"c"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(sleep <span class="cm-number">10</span>;./pythoncharm)&amp;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 141px;"></div><div class="CodeMirror-gutters" style="display: none; height: 141px;"></div></div></div></pre><h3><a name="the-at-command" class="md-header-anchor"></a><span>The </span><code>at</code><span> command</span></h3><p><span>Typing </span><strong><span>Ctrl</span></strong><span>+</span><strong><span>D</span></strong><span> quits the </span><strong><span>at</span></strong><span> utility and generates the &quot;EOT&quot; message.</span></p><p><span>For  example,  to  run  a  job </span><code>at 4pm + 3 days</code><span> from now, you would do at 4pm + 3 days, to run a job at </span><code>10:00am on July 31</code><span>, you would do at 10am Jul 31 and to run a job at 1am tomorrow, you would  do  at  1am tomorrow.</span></p><p><code>atq</code><span> to check jobs to be done</span></p><p><code>atre</code><span>+</span><code>任务编号</code><span> remove job</span></p><p><span>It is a good idea to pick strange execution times, because system jobs are often run at &quot;round&quot; hours, as you can see in </span><a href='http://www.tldp.org/LDP/intro-linux/html/sect_04_04.html#sect_04_04_04'><span>Section 4.4.4</span></a><span> the next section.  For example, jobs are often run at exactly 1 o&#39;clock in the morning (e.g. system indexing to update a standard locate  database), so entering a time of 0100 may easily slow your system down  rather than fire it up.  To prevent jobs from running all at the same  time, you may also use the </span><strong><span>batch</span></strong><span> command, which  queues processes and feeds the work in the queue to the system in an  evenly balanced way, preventing excessive bursts of system resource  usage.(所以尽量不要安排到正点去做，而且</span><code>batch</code><span>没那么多逼事儿，直接</span><code>batch</code><span>然后你就输入命令就行了，在内存低的时候它自己会执行。)</span></p><h3><a name="cron-and-crontab" class="md-header-anchor"></a><span>Cron and crontab</span></h3><p><span>就是每天固定时间执行任务。</span></p><p><span>At system startup the cron daemon searches </span><code>/var/spool/cron/</code><span> for crontab entries which are named after accounts in </span><code>/etc/passwd</code><span>, it searches </span><code>/etc/cron.d/</code><span> and it searches </span><code>/etc/crontab</code><span>, then </span><strong><span>uses this information every minute</span></strong><span> to check if there is something to be done.</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/015.png" referrerpolicy="no-referrer" alt="pass015"></p><p><strong><span>Some variables are set, and after that there&#39;s the actual scheduling,  one line per job, starting with 5 time and date fields.  The first field contains the minutes (from 0 to 59), the second defines the hour of  execution (0-23), the third is day of the month (1-31), then the number  of the month (1-12), the last is day of the week (0-7, both 0 and 7 are  Sunday).  An asterisk in these fields represents the total acceptable  range for the field.  Lists are allowed; to execute a job from Monday to Friday enter 1-5 in the last field, to execute a job on Monday,  Wednesday and Friday enter 1,3,5.Then comes the user who should run the processes which are listed in the last column.</span></strong></p><p><code>crontab -l</code><span> display crontbas</span></p><p><code>crontab -e</code><span> edit crontabs</span></p><p><img src="https://github.com/caoxuCarlos/caoxuCarlos.github.io/raw/master/images-for-notes/linux_note_picture_for_C4/016.png" referrerpolicy="no-referrer" alt="pass 016"></p><blockquote><p><span>The </span><code>backup.sh</code><span> script is executed every Thursday and Sunday.</span></p></blockquote><p><span>You don&#39;t have to specify the user who should run the commands.  They are executed with the user&#39;s own permissions by default.</span></p></div>
+</body>
+</html>
