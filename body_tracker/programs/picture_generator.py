@@ -7,8 +7,8 @@ import os
 cwd = os.getcwd()  # Get the current working directory (cwd)
 # files = os.listdir(cwd)  # Get all the files in that directory
 # print("Files in %r: %s" % (cwd, files))
-data_loc = cwd + "/body_tracker/programs/body_data.csv"
-pic_loc = cwd + "/body_tracker/pictures/"
+data_loc = cwd + "/body_data.csv"
+pic_loc = cwd + "/../pictures/"
 df = pd.read_csv(data_loc)
 
 fig1 = plt.figure()
