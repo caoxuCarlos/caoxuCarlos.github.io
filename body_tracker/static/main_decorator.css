@@ -1,0 +1,44 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 0px solid black;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: #363642;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: #363642;
+}
+
+.carousel-caption  {
+   color: #363642;
+}
+
+/* Modify the background color */
+
+.navbar-custom {
+    background-color: #363642;
+}
+
+/* Modify brand and text color */
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #F0EFEC;
+    float: left;
+    /*padding: 15px;*/
+    text-align: center;
+    width: 100%;
+}
