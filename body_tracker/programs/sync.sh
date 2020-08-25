@@ -1,6 +1,6 @@
 #! /bin/bash
 
-python3 picture_generator.py
+python3 chart_generator.py
 
 git add -A
 
