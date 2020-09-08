@@ -7,7 +7,7 @@ import os
 cwd = os.getcwd()  # Get the current working directory (cwd)
 # files = os.listdir(cwd)  # Get all the files in that directory
 # print("Files in %r: %s" % (cwd, files))
-data_loc = cwd + "/body_data.csv"
+data_loc = cwd + "/cx_body_data.csv"
 pic_loc = cwd + "/../pictures/"
 df = pd.read_csv(data_loc)
 
@@ -25,6 +25,7 @@ ax1.set_ylim((-6, 4))
 fig1.set_facecolor('#F0EFEC')
 fig1.savefig(pic_loc + 'rbf.png', dpi=200, pad_inches=10)
 
+
 fig2 = plt.figure()
 ax2 = fig2.add_subplot(111)
 x2 = df["day_num"]
@@ -34,9 +35,11 @@ ax2.set_ylabel("Weight")
 ax2.grid(True, which='both', axis='both', color='#D6D1D0', linestyle='-', linewidth=2)
 ax2.plot(x2, y2, color='#610006', linewidth='3')
 ax2.set_facecolor('#F0EFEC')
-ax2.set_ylim((60, 75))
+ax2.set_ylim((65, 75))
 fig2.set_facecolor('#F0EFEC')
 fig2.savefig(pic_loc + 'w.png', dpi=200, pad_inches=10)
+
+# plt.show()
 
 img = Image.open(pic_loc + 'rbf.png', 'r')
 img_w, img_h = img.size
