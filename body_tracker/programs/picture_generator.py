@@ -15,8 +15,8 @@ fig1 = plt.figure()
 ax1 = fig1.add_subplot(111)
 x1 = df["day_num"]
 y1 = df["delta_of_bf_ratio"]
-ax1.set_xlabel("Day")
-ax1.set_ylabel('Relative Body-fat Ratio')
+ax1.set_xlabel("Time(day)")
+ax1.set_ylabel('Relative Body-fat Ratio(1%)')
 ax1.grid(True, which='both', axis='both', color='#D6D1D0', linestyle='-', linewidth=2)
 ax1.plot(x1, y1, color='#363642', linewidth='3')
 ax1.yaxis.set_major_formatter(mtick.PercentFormatter())
@@ -30,8 +30,8 @@ fig2 = plt.figure()
 ax2 = fig2.add_subplot(111)
 x2 = df["day_num"]
 y2 = df["weight"]
-ax2.set_xlabel("Day")
-ax2.set_ylabel("Weight")
+ax2.set_xlabel("Time(day)")
+ax2.set_ylabel("Weight(kg)")
 ax2.grid(True, which='both', axis='both', color='#D6D1D0', linestyle='-', linewidth=2)
 ax2.plot(x2, y2, color='#610006', linewidth='3')
 ax2.set_facecolor('#F0EFEC')
