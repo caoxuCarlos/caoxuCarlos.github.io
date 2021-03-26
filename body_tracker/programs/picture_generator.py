@@ -25,7 +25,6 @@ ax1.set_ylim((-6, 4))
 fig1.set_facecolor('#F0EFEC')
 fig1.savefig(pic_loc + 'rbf.png', dpi=200, pad_inches=10)
 
-
 fig2 = plt.figure()
 ax2 = fig2.add_subplot(111)
 x2 = df["day_num"]
@@ -39,7 +38,7 @@ ax2.set_ylim((65, 75))
 fig2.set_facecolor('#F0EFEC')
 fig2.savefig(pic_loc + 'w.png', dpi=200, pad_inches=10)
 
-# plt.show()
+plt.show()
 
 img = Image.open(pic_loc + 'rbf.png', 'r')
 img_w, img_h = img.size
