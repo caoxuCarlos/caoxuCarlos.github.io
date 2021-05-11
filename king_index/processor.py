@@ -4,7 +4,9 @@ import matplotlib.pyplot as plt
 import re
 from PIL import Image
 import matplotlib.ticker as plticker
+import time
 
+t0 = time.time()
 df = pd.read_excel('data/成交量占比指标.xls')
 # The number of days is the columns of the df minus 2.
 # One is id, another is name.
@@ -31,31 +33,35 @@ for i in range(num):
         volumn_all += df1.iloc[k,2]
     volumn_index_on_that_day = volumn_five_percent/volumn_all
 
-    the_date = re.findall(r'\d\d\d\d-\d\d-\d\d',rolling_row_name)[0]
+    the_date = re.findall(r'\d\d\d\d-\d\d-\d\d',str(rolling_row_name))[0]
     table.iloc[i,0] = the_date
     table.iloc[i,1] = volumn_five_percent
     table.iloc[i,2] = volumn_all
     table.iloc[i,3] = volumn_index_on_that_day
     table.iloc[i,4] = i + 1
+    print("{0:0.1f}%".format((i/num)*100))
 
 table.to_excel(r'./output/index.xlsx', index = False)
-fig = plt.figure()
+t1 = time.time()
+
+#%%
+fig = plt.figure(figsize=(12, 6), dpi=200)
 ax = fig.add_subplot(111)
 ax.plot(table[table.columns[0]],table[table.columns[3]] ,',-',color='#363642',linewidth='2')
 
 ax.set_xlabel(u"Date",fontsize=8)
 ax.set_ylabel(u"Top 5% Volumn / All Volumn",fontsize=8)
 latest_date = table.iloc[num-1][0]
-ax.set_title('Latest Date: ' + latest_date, fontsize=8)
+ax.set_title('The latest data is from: ' + latest_date, fontsize=8)
 
-loc_base = int(num/15)
+loc_base = int(num/12)
 loc = plticker.MultipleLocator(base=loc_base) # this locator puts ticks at regular intervals
 ax.xaxis.set_major_locator(loc)
 plt.xticks(rotation = 45)
 ax.tick_params(which='both', width=1.15)
 ax.tick_params(which='major', length=4)
 ax.tick_params(which='minor', length=2, color='k')
-ax.tick_params(axis='x',which='major',labelsize='5')
+ax.tick_params(axis='x',which='major',labelsize='7')
 ax.tick_params(axis='y',which='major',labelsize='8')
 
 fig.set_facecolor('#F0EFEC')
@@ -66,9 +72,13 @@ fig.show()
 
 img = Image.open( 'output/king_index_raw.png', 'r')
 img_w, img_h = img.size
-background = Image.new('RGB', (3000, 2000), (240, 239, 236))
+background = Image.new('RGB', (5000, 2500), (240, 239, 236))
 bg_w, bg_h = background.size
 offset = ((bg_w - img_w) // 2, (bg_h - img_h) // 2 )
 # offset = ((bg_w - img_w) // 2, 0)
 background.paste(img, offset)
 background.save('./output/king_index_1.png')
+t2 = time.time()
+
+print("Data Processing: ", t1-t0)
+print("Plotting: ",t2-t2)
