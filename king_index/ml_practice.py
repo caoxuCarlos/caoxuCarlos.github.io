@@ -1,11 +1,4 @@
 import pandas as pd
-import numpy as np
-import random as rnd
-
-# visualization
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 # machine learning
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -91,3 +84,4 @@ acc = {
     "acc_random_forest": [acc_random_forest,acc_random_forest_pre],
 }
 
+print(acc)
