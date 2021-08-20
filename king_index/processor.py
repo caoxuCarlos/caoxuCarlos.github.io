@@ -7,7 +7,7 @@ import matplotlib.ticker as plticker
 import time
 
 t0 = time.time()
-df = pd.read_excel('data/成交量占比指标.xls')
+df = pd.read_excel('data/成交量占比指标v2.xls')
 # The number of days is the columns of the df minus 2.
 # One is id, another is name.
 num = df.shape[1]-2
