@@ -89,4 +89,5 @@ offset = ((bg_w - img_w) // 2, (bg_h - img_h) // 2 )
 background.paste(img, offset)
 #6
 background.save('../output/pe/white_sprit.png')
+print("White sprit industry data processed.")
 plt.show()

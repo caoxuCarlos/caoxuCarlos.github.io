@@ -89,4 +89,5 @@ offset = ((bg_w - img_w) // 2, (bg_h - img_h) // 2 )
 background.paste(img, offset)
 #6
 background.save('../output/pe/new_energy.png')
+print("New energy concept data processed.")
 plt.show()
