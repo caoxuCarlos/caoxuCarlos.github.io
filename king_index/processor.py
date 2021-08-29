@@ -59,6 +59,7 @@ ax.set_title('The latest data is from: ' + latest_date, fontsize=8)
 loc_base = int(num/12)
 loc = plticker.MultipleLocator(base=loc_base) # this locator puts ticks at regular intervals
 ax.xaxis.set_major_locator(loc)
+
 plt.xticks(rotation = 45)
 ax.tick_params(which='both', width=1.15)
 ax.tick_params(which='major', length=4)
