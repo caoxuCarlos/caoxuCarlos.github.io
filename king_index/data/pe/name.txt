@@ -1,0 +1,16 @@
+光伏    photovoltaic
+化工    chemical
+医药    pharmaceutical
+半导体    semiconductor
+国防军工    national_defense
+家电    appliance
+建筑材料    building_materials
+新能源车    new_energy_vehicle
+机械设备    machinery
+核电    nuclear_power
+水电    hydropower
+白酒    liquor
+金融    financial
+钢铁有色    iron_and_steel_non_ferrous
+非酒食品    non_alcoholic_food
+风电    wind_power

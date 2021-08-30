@@ -1,13 +1,23 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import regex as re
 from PIL import Image
-#1
-df = pd.read_excel("../data/pe/光伏/average_pe_method.xlsx",engine='openpyxl')
-#2
-df.to_excel("../output/pe/photovoltaic_pe_original_data.xlsx")
+
+c_name = "光伏"
+e_name = "photovoltaic"
+
+original_data_path ="../data/pe/"+c_name+"/average_pe_method.xlsx"
+output_data_path ="../output/pe/"+e_name+"_pe_original_data.xlsx"
+y_label = e_name.capitalize()+" PE"
+raw_path = "../output/pe/raw/"+e_name+"_raw.png"
+img_path = "../output/pe/"+e_name+".png"
+finished_noitce =e_name.capitalize()+" data processed."
+
+#REPLACEMENT 1
+df = pd.read_excel(original_data_path,engine='openpyxl')
+#REPLACEMENT 2
+df.to_excel(output_data_path)
 
 df = df.iloc[:,:5]
 df.columns = df.iloc[3,:5]
@@ -57,8 +67,9 @@ ax.plot(df["date"],df[df.columns[1]],
         '-',color='#363642',linewidth='2')
 
 ax.set_xlabel(u"Date",fontsize=8)
-#3
-ax.set_ylabel(u"Photovoltaic PE",fontsize=8)
+
+#REPLACEMENT 3
+ax.set_ylabel(y_label,fontsize=8)
 latest_date = str(df.iloc[df.shape[0]-1,0])
 ptn=r'\d\d\d\d-\d\d\-\d\d'
 latest_date =re.findall(ptn,latest_date)[0]
@@ -77,17 +88,18 @@ fig.set_facecolor('#F0EFEC')
 ax.set_facecolor('#F0EFEC')
 ax.grid(True,which='both',axis='both',color='#D6D1D0', linestyle='-', linewidth=1)
 ax.legend(loc='upper right',facecolor='#F0EFEC',edgecolor='#716F6E',fontsize='10')
-#4
-fig.savefig('../output/pe/photovoltaic_raw.png', dpi=300, bbox_inches='tight', pad_inches=1)
-#5
-img = Image.open('../output/pe/photovoltaic_raw.png', 'r')
+#REPLACEMENT 4
+fig.savefig(raw_path, dpi=300, bbox_inches='tight', pad_inches=1)
+#REPLACEMENT 5
+img = Image.open(raw_path, 'r')
 img_w, img_h = img.size
 background = Image.new('RGB', (5000, 2500), (240, 239, 236))
 bg_w, bg_h = background.size
 offset = ((bg_w - img_w) // 2, (bg_h - img_h) // 2 )
 # offset = ((bg_w - img_w) // 2, 0)
 background.paste(img, offset)
-#6
-background.save('../output/pe/photovoltaic.png')
-print("Photovoltaic industry data processed.")
+#REPLACEMENT 6
+background.save(img_path)
+#REPLACEMENT 7
+print(finished_noitce)
 plt.show()
