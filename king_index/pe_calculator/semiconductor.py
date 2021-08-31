@@ -102,4 +102,4 @@ background.paste(img, offset)
 background.save(img_path)
 #REPLACEMENT 7
 print(finished_noitce)
-plt.show()
+# plt.show()
