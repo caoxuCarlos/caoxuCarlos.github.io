@@ -7,7 +7,7 @@ from PIL import Image
 c_name = "非酒食品"
 e_name = "non_alcoholic_food"
 
-original_data_path ="../data/pe/"+c_name+"/average_pe_method.xlsx"
+original_data_path ="../data/pe/"+c_name+"/"+e_name+".xlsx"
 output_data_path ="../output/pe/"+e_name+"_pe_original_data.xlsx"
 y_label = e_name.capitalize()+" PE"
 raw_path = "../output/pe/raw/"+e_name+"_raw.png"
