@@ -41,7 +41,8 @@ for i in range(num):
     table.iloc[i,2] = volumn_all
     table.iloc[i,3] = volumn_index_on_that_day
     table.iloc[i,4] = i + 1
-    print("{0:0.1f}%".format((i/num)*100))
+    if(i%10==0): print("{0:0.1f}%".format((i/num)*100))
+
 
 table.to_excel(r'./output/index.xlsx', index = False)
 t1 = time.time()
